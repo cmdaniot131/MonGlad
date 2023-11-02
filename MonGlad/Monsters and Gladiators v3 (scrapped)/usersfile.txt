@@ -1,0 +1,21 @@
+
+Username: Chr
+Health: 200
+Zenny: 0
+Equipped Great Sword: A
+-------------------------------------
+Username: C
+Health: 200
+Zenny: 0
+Equipped Great Sword: A
+-------------------------------------
+Username: Cs
+Health: 200
+Zenny: 0
+Equipped Great Sword: A
+-------------------------------------
+Username: Chrill
+Health: 200
+Zenny: 0
+Equipped Great Sword: A
+-------------------------------------

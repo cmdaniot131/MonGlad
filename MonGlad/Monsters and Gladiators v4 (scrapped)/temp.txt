@@ -1,0 +1,9 @@
+Username: Chrill
+Health: 350
+Zenny: 2000
+Equipped Great Sword: Buster Sword
+-------------------------------------
+Health: 350
+Zenny: 2000
+Equipped Great Sword: Buster Sword
+-------------------------------------

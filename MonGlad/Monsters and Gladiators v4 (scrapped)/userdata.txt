@@ -1,0 +1,25 @@
+Username: Chrill
+Health: 350
+Zenny: 2000
+Equipped Great Sword: Buster Sword
+-------------------------------------
+Username: C
+Health: 350
+Zenny: 2000
+Equipped Great Sword: Buster Sword
+-------------------------------------
+Username: C
+Health: 1
+Zenny: 2000
+Equipped Great Sword: `v
+-------------------------------------
+Username: C
+Health: 101
+Zenny: 1000
+Equipped Great Sword: `v
+-------------------------------------
+Username: C
+Health: 101
+Zenny: 1000
+Equipped Great Sword: `v
+-------------------------------------
