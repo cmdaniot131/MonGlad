@@ -124,16 +124,16 @@ void ureg(userinfo &uinfo, weapon &buster) {
     string storedusername;
     bool existingUser = false;
     
-    cout << "\n\t\t\t\t\t\tEnter New Username (Up to 6 characters): ";
+    cout << "\n\t\t\t\t\t\tEnter New Username (Up to 5 characters only): ";
     getline(cin, newUser.username);
     
-    int length = 0;
-    while (newUser.username[length] != '\0') {
-        length++;
+    int l = 0;
+    while (newUser.username[l] != '\0') {
+        l++;
     }
     
-    if (length > 6) {
-        cout << "\n\t\t\t\t\t\tInvalid input. Username should be up to 6 characters." << endl;
+    if (l > 5) {
+        cout << "\n\t\t\t\t\t\tInvalid input. Username should be up to 5 characters only." << endl;
         system("pause");
         system("cls");
         return;
@@ -155,7 +155,7 @@ void ureg(userinfo &uinfo, weapon &buster) {
         ofstream outFile("userdata.txt");
         newUser.equippedGS = buster.name;
         newUser.equippedGSdmg = buster.damage;
-        newUser.userzenny = 600;
+        newUser.userzenny = 0;
         newUser.healthpots = 5;
         outFile << newUser.username << endl;
         outFile << newUser.userzenny << endl;
