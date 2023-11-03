@@ -32,7 +32,7 @@ void arena(userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hellspl
 void mainmenu(userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hellsplitter, monster &kulu, monster &bar, monster &dia, monster &dummy);
 void save(const userinfo &uinfo);
 
-int main(int argc, char** argv) {
+int main() {
 	
 	userinfo uinfo;
 	weapon buster = {"Buster Sword", 50}; 
@@ -43,7 +43,6 @@ int main(int argc, char** argv) {
 	monster bar = {"Barroth"};
 	monster dia = {"Diablos"};
 
-	
 	char choice;
 	createFile();
 	
@@ -125,9 +124,20 @@ void ureg(userinfo &uinfo, weapon &buster) {
     string storedusername;
     bool existingUser = false;
     
-    
-    cout << "\n\t\t\t\t\t\tEnter New Username: ";
+    cout << "\n\t\t\t\t\t\tEnter New Username (Up to 6 characters): ";
     getline(cin, newUser.username);
+    
+    int length = 0;
+    while (newUser.username[length] != '\0') {
+        length++;
+    }
+    
+    if (length > 6) {
+        cout << "\n\t\t\t\t\t\tInvalid input. Username should be up to 6 characters." << endl;
+        system("pause");
+        system("cls");
+        return;
+    }
     
     while (inFile >> storedusername) {
         if (storedusername == newUser.username) {
@@ -145,7 +155,7 @@ void ureg(userinfo &uinfo, weapon &buster) {
         ofstream outFile("userdata.txt");
         newUser.equippedGS = buster.name;
         newUser.equippedGSdmg = buster.damage;
-        newUser.userzenny = 2000;
+        newUser.userzenny = 600;
         newUser.healthpots = 5;
         outFile << newUser.username << endl;
         outFile << newUser.userzenny << endl;
@@ -242,31 +252,30 @@ void tutorial(userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hell
     system("pause");
     system("cls");
 	
-	
-	
     while (phealth > 0 && mhealth > 0) {
-    	
-    	printf("\t\t\t\t        %%%%%%%           \n"
-           "\t\t\t\t     %%%=====*#%%%        \n"
-           "\t\t\t\t    %%*-:::::==*%%        \n"
-           "\t\t\t\t    %%#+:::=*--=%%        \n"
-           "\t\t\t\t    %%#*::-+*--=%%        \n"
-           "\t\t\t\t    %%*=-----==+%%        \n"
-           "\t\t\t\t      %%==---+*%**%%      \n"
-           "\t\t\t\t    %%#*%%%%%%#*++=*%%    \n"
-           "\t\t\t\t   %%*++**+**+*%**-=+#%   \n"
-           "\t\t\t\t %%%#+*#++====++%%---*#%% \n"
-           "\t\t\t\t %%*+-*%--+=--=+%%--:=+%% \n"
-           "\t\t\t\t %%+--*%::+=--=+%%#+:-=%% \n"
-           "\t\t\t\t %%=:-*%::---==+%%%#+=+%% \n"
-           "\t\t\t\t   %%%%%**#+-++*%% %%%%   \n"
-           "\t\t\t\t        %%*++*#%%         \n"
-           "\t\t\t\t         %%%%%%           \n"
-           "\t\t\t\t         %%%#%%           \n"
-           "\t\t\t\t         %%#*%%           \n"
-           "\t\t\t\t   %%%%%%%####%%%%%%%%    \n"
-           "\t\t\t\t %%*+*******+*****##*%%   \n"
-           "\t\t\t\t %%##################%%   \n");
+           
+        cout << "\t\t\t\t        %%%%%%%           \n"
+		     << "\t\t\t\t     %%%=====*#%%%        \n"
+		     << "\t\t\t\t    %%*-:::::==*%%        \n"
+		     << "\t\t\t\t    %%#+:::=*--=%%        \n"
+		     << "\t\t\t\t    %%#*::-+*--=%%        \n"
+		     << "\t\t\t\t    %%*=-----==+%%        \n"
+		     << "\t\t\t\t      %%==---+*%**%%      \n"
+		     << "\t\t\t\t    %%#*%%%%%%#*++=*%%    \n"
+		     << "\t\t\t\t   %%*++**+**+*%**-=+#%   \n"
+		     << "\t\t\t\t %%%#+*#++====++%%---*#%% \n"
+		     << "\t\t\t\t %%*+-*%--+=--=+%%--:=+%% \n"
+		     << "\t\t\t\t %%+--*%::+=--=+%%#+:-=%% \n"
+		     << "\t\t\t\t %%=:-*%::---==+%%%#+=+%% \n"
+		     << "\t\t\t\t   %%%%%**#+-++*%% %%%%   \n"
+		     << "\t\t\t\t        %%*++*#%%         \n"
+		     << "\t\t\t\t         %%%%%%           \n"
+		     << "\t\t\t\t         %%%#%%           \n"
+		     << "\t\t\t\t         %%#*%%           \n"
+		     << "\t\t\t\t   %%%%%%%####%%%%%%%%    \n"
+		     << "\t\t\t\t %%*+*******+*****##*%%   \n"
+		     << "\t\t\t\t %%##################%%   \n";    
+           
     	cout << "\n\t\t\t\t\tDummy Health: " << mhealth << endl;
     	cout << endl;
     	
@@ -332,7 +341,6 @@ void tutorial(userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hell
     } else {
         cout << "\n\t\tCongratulations for completing the tutorial! Now go defeat some real beasts!" << endl;
         uinfo.userzenny += 0;
-        save(uinfo);
     }
     system("pause");
     system("cls");
@@ -1021,7 +1029,7 @@ void mainmenu (userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hel
         cout << "\t\t\t\t\t\t[C]olosseum Store" << endl;
         cout << "\t\t\t\t\t\t[T]utorial" << endl;
         cout << "\t\t\t\t\t\t[E]nter Arena" << endl;
-        cout << "\t\t\t\t\t\t[L]ogout" << endl;
+        cout << "\t\t\t\t\t\t[R]eturn to Login" << endl;
         cout << "\n\t\t\t\t\t\tEnter your choice: ";
         cin >> choice;
         
@@ -1035,12 +1043,16 @@ void mainmenu (userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hel
         	case 't':
         		system("cls");
         		tutorial(uinfo, buster, deathscythe, hellsplitter, kulu, bar, dia, dummy);
+        		break;
         	case 'E':
         	case 'e':
         		arena(uinfo, buster, deathscythe, hellsplitter, kulu, bar, dia);
         		break;
-        	case 'L':
-        	case 'l':
+        	case 'R':
+        	case 'r':
+        		system("cls");
+        		cout << "\t\t\t\t\t\tYou are now returning to login" << endl;
+        		system("pause");
         		system("cls");
         		break;
         	default:
@@ -1049,7 +1061,8 @@ void mainmenu (userinfo &uinfo, weapon &buster, weapon &deathscythe, weapon &hel
             	break;
 		}
         
-	} while (choice != 'L' && choice != 'l');
+	} while (choice != 'R' && choice != 'r');
+	
 }
 
 void save(const userinfo &uinfo) {
